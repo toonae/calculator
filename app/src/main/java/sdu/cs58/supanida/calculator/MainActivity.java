@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     //1.Explicit ประกาศตัวแปรบน java
     EditText number1EditText, number2EditText;
-    Button addButton;
+    Button addButton,DeleteButton,PlusButton,DivideButton;
     TextView resultTextView;
 
     int num1,num2,result;
@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     number1EditText = findViewById(R.id.edtNumber1);
     number2EditText = findViewById(R.id.edtNumber2);
     addButton = findViewById(R.id.btnAdd);
+    DeleteButton = findViewById(R.id.btnDel);
+    PlusButton = findViewById(R.id.btnPlus);
+    DivideButton = findViewById(R.id.btnDivide);
+
     resultTextView = findViewById(R.id.txvResult);
     //3.สั่งให้ปุ่มดักฟังว่าเมื่อ user คลิกที่ปุ่ม Login
     addButton.setOnClickListener(new View.OnClickListener() {
@@ -33,9 +37,45 @@ public class MainActivity extends AppCompatActivity {
         num1 = Integer.parseInt(number1EditText.getText().toString().trim());
         num2 = Integer.parseInt(number2EditText.getText().toString().trim());
         result = num1+num2;
-
         //4.แสดงผลลัพธ์การคำนวณ
-        resultTextView.setText(result+"");
+            resultTextView.setText(result+"");
+
+    DeleteButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+         //แปลงค่าที่รับจาก EditText เป็นตัวเลข แล้วเก็บลงในตัวแปรชนิด Int
+         num1 = Integer.parseInt(number1EditText.getText().toString().trim());
+         num2 = Integer.parseInt(number2EditText.getText().toString().trim());
+         result = num1-num2;
+            //4.แสดงผลลัพธ์การคำนวณ
+            resultTextView.setText(result+"");
+
+    PlusButton.setOnClickListener(new View.OnClickListener() {
+         @Override
+          public void onClick(View view) {
+           //แปลงค่าที่รับจาก EditText เป็นตัวเลข แล้วเก็บลงในตัวแปรชนิด Int
+           num1 = Integer.parseInt(number1EditText.getText().toString().trim());
+            num2 = Integer.parseInt(number2EditText.getText().toString().trim());
+             result = num1*num2;
+              //4.แสดงผลลัพธ์การคำนวณ
+              resultTextView.setText(result+"");
+    DivideButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            //แปลงค่าที่รับจาก EditText เป็นตัวเลข แล้วเก็บลงในตัวแปรชนิด Int
+            num1 = Integer.parseInt(number1EditText.getText().toString().trim());
+            num2 = Integer.parseInt(number2EditText.getText().toString().trim());
+            result = num1 / num2;
+            //4.แสดงผลลัพธ์การคำนวณ
+            resultTextView.setText(result + "");
+        }
+    });
+
+        }
+        });
+        }
+    });
+
 
         }
     }); //end setOnClickListener
@@ -43,4 +83,3 @@ public class MainActivity extends AppCompatActivity {
     } //end Method onCreate
 
 }//end Class
-
